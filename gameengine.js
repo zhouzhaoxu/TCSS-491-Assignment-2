@@ -127,10 +127,12 @@ GameEngine.prototype.update = function () {
 }
 
 GameEngine.prototype.loop = function () {
-    this.clockTick = this.timer.tick();
-    this.update();
-    this.draw();
-    this.click = null;
-    this.rightclick = null;
-    this.wheel = null;
+	if(!game_Over) {
+	    this.clockTick = this.timer.tick();
+	    this.update();
+	    this.draw();
+	    this.click = null;
+	    this.rightclick = null;
+	    this.wheel = null;
+	}
 }
