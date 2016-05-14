@@ -24,7 +24,7 @@ function Circle(game, team, radius) {
     }	
 
     //how fast it is going per clock tick
-    this.velocity = { x: Math.random() * 200, y: Math.random() * 200 };
+    this.velocity = { x: Math.random() * 200 + 30, y: Math.random() * 200 + 30};
     var speed = Math.sqrt(this.velocity.x * this.velocity.x + this.velocity.y * this.velocity.y);
     if (speed > this.maxSpeed) {
         var ratio = this.maxSpeed / speed;
@@ -69,11 +69,15 @@ Circle.prototype.collide = function (other) {
 };
 
 Circle.prototype.collideRect = function (other) {
-    return distance(this, other) < this.radius + other.side;
+	if(other.color) {
+		return distance(this, other) < this.radius;
+	} else {
+		return distance(this, other) < this.radius + other.side;
+	}
 };
 
 Circle.prototype.collideRect2 = function (other, radius) {
-    return distance(this, other) < radius + other.side;
+    return distance(this, other) < radius + other.side - 10;
 };
 
 Circle.prototype.collideLeft = function () {
