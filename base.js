@@ -106,7 +106,7 @@ Base.prototype.draw = function (ctx) {
     ctx.fill();
     ctx.closePath();
     if(this.position) {
-        this.animation.drawFrame(this.game.clockTick, ctx, this.x - 40, this.y - 20);
+        this.animation.drawFrame(this.game.clockTick, ctx, this.x - 38, this.y - 20);
     } else {
         this.animation.drawFrame(this.game.clockTick, ctx, this.x, this.y - 20);
     }
