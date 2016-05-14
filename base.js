@@ -16,6 +16,7 @@ function Base(game, position, spritesheet) {
     this.position = position;
     this.spritesheet = spritesheet;
     this.colors = ["Red", "Blue", "Green", "White"];
+    //this.gameOver = new Animation(spritesheet2, 333, 289, 620, 120, 1, 0.30, 1, true);
     //this.animation = new Animation(spritesheet, 169 - this.health * 15, 1, 98, 15, 1, 0.30, 1, true);
     switch(position) {
     	case 0: Entity.call(this, game, 0, 400); this.x = 0; this.y = 350; break;
@@ -86,7 +87,7 @@ Base.prototype.update = function () {
         	this.game.entities[i].removeFromWorld = true;
         }
         if (ent !== this && this.collide(ent)) {
-        	console.log(this.color, this.health);
+        	//console.log(this.color, this.health);
             if(this.color !== ent.color) {
                 this.touchCircle(ent);
             }
@@ -105,10 +106,9 @@ Base.prototype.draw = function (ctx) {
     ctx.fill();
     ctx.closePath();
     if(this.position) {
-        this.animation.drawFrame(this.game.clockTick, ctx, this.x - 50, this.y - 20);
+        this.animation.drawFrame(this.game.clockTick, ctx, this.x - 40, this.y - 20);
     } else {
         this.animation.drawFrame(this.game.clockTick, ctx, this.x, this.y - 20);
     }
-    
     Entity.prototype.draw.call(this)
 };
